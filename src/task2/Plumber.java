@@ -18,15 +18,15 @@ public class Plumber {
         RemoveFilter removeFilter5 = new RemoveFilter(5);
         MeasurementConversion measurementConversion = new MeasurementConversion(2);
         TemperatureConversion temperatureConversion = new TemperatureConversion(4);
-        PressureWildPointsFilter wildpointsFilter = new PressureWildPointsFilter(3, 10);
+        PressureWildPoints pressureWildPoints = new PressureWildPoints(3, 10);
 
         SinkFilter sinkFilter = new SinkFilter(new int[]{0, 4, 2, 3}, "OutputB.dat");
         SinkFilter wildpointsSinkFilter = new SinkFilter(new int[]{0, 3}, "WildPoints.dat");
 
         // connect the filters to each other
-        sinkFilter.Connect(wildpointsFilter, 0, 0);
-        wildpointsSinkFilter.Connect(wildpointsFilter, 0, 1);
-        wildpointsFilter.Connect(temperatureConversion, 0, 0);
+        sinkFilter.Connect(pressureWildPoints, 0, 0);
+        wildpointsSinkFilter.Connect(pressureWildPoints, 0, 1);
+        pressureWildPoints.Connect(temperatureConversion, 0, 0);
         temperatureConversion.Connect(measurementConversion, 0, 0);
         measurementConversion.Connect(removeFilter5, 0, 0);
         removeFilter5.Connect(removeFilter1, 0, 0);
@@ -38,7 +38,7 @@ public class Plumber {
         removeFilter5.start();
         measurementConversion.start();
         temperatureConversion.start();
-        wildpointsFilter.start();
+        pressureWildPoints.start();
         sinkFilter.start();
         wildpointsSinkFilter.start();
 
