@@ -1,15 +1,5 @@
 package task2;
 
-/**
- * ***************************************************************************************************************
- * File:Plumber.java
- * <p/>
- * Description:
- * <p/>
- * This class instantiates and connects all of our Filters to create the output.
- * <p/>
- * ****************************************************************************************************************
- */
 public class Plumber {
     public static void main(String argv[]) {
 
@@ -23,7 +13,6 @@ public class Plumber {
         SinkFilter sinkFilter = new SinkFilter(new int[]{0, 4, 2, 3}, "OutputB.dat");
         SinkFilter wildpointsSinkFilter = new SinkFilter(new int[]{0, 3}, "WildPoints.dat");
 
-        // connect the filters to each other
         sinkFilter.Connect(pressureWildPoints, 0, 0);
         wildpointsSinkFilter.Connect(pressureWildPoints, 0, 1);
         pressureWildPoints.Connect(temperatureConversion, 0, 0);
@@ -32,7 +21,6 @@ public class Plumber {
         removeFilter5.Connect(removeFilter1, 0, 0);
         removeFilter1.Connect(sourceFilter, 0, 0);
 
-        // start the filters
         sourceFilter.start();
         removeFilter1.start();
         removeFilter5.start();
