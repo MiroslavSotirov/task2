@@ -14,8 +14,8 @@ public class Plumber {
     public static void main(String argv[]) {
 
         SourceFilter sourceFilter = new SourceFilter("FlightData.dat");
-        DeleteFilter deleteFilter1 = new DeleteFilter(1);
-        DeleteFilter deleteFilter5 = new DeleteFilter(5);
+        RemoveFilter deleteFilter1 = new RemoveFilter(1);
+        RemoveFilter deleteFilter5 = new RemoveFilter(5);
         FeetToMeterFilter feetToMeterFilter = new FeetToMeterFilter(2);
         FahrenheitToCelsiusFilter fahrenheitToCelsiusFilter = new FahrenheitToCelsiusFilter(4);
         PressureWildPointsFilter wildpointsFilter = new PressureWildPointsFilter(3, 10);
